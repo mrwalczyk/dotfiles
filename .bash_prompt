@@ -35,7 +35,7 @@ prompt_git() {
 			fi;
 
 			# Check for untracked files.
-			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+			if [ -n "$(git ls-files --others --exclude-standard 2> /dev/null)" ]; then
 				s+='?';
 			fi;
 
