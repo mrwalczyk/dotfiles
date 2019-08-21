@@ -22,8 +22,16 @@ prompt_git() {
 		# save the repo name
 		#repoName=$(basename `git rev-parse --show-toplevel`)
 		local repoDir=$(git rev-parse --show-toplevel)
-		repoName=$(basename "$repoDir")
-
+		repoName="$(basename "$repoDir"):"
+		
+		# I source control my home directory && most of the time that
+		# is the location most of my terminal work resides. As a result
+		# I will remove the repo part of  the bash_prompt output to avoid
+		# an unnecessarily long prompt.
+		if [ "$repoName" == "matt:" ] || [  "$repoName" == "walczyk:" ]; then 
+			repoName=''; 
+		fi;
+		
 		# check if the current directory is in .git before running git checks
 		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
 
@@ -61,7 +69,7 @@ prompt_git() {
 
 		[ -n "${s}" ] && s=" [${s}]";
 
-		echo -e "${1}${repoName}:${branchName}${2}${s}";
+		echo -e "${1}${repoName}${branchName}${2}${s}";
 	else
 		return;
 	fi;
