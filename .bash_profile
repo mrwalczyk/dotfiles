@@ -1,6 +1,12 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
+# Check the window size after each command and, if necessary,
+# Update the values of LINES and COLUMNS.
+# This attempts to correct line-wrapping-over-prompt issues when a window is resized
+shopt -u checkwinsize
+shopt -s checkwinsize
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
