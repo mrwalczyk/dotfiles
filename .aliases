@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Workaround to fix man command not clearing:
+alias man="man -P less"
+
+# My Defaults
+alias ln="ln -s"
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
